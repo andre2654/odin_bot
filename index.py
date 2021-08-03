@@ -1,13 +1,18 @@
 import discord
 from discord.ext.commands import Bot
 from discord import DMChannel
+from cryptography.fernet import Fernet
 import time
 import datetime
 
 now = datetime.datetime.now()
 hour = now.hour
 
-TOKEN = 'ODU2NjkwODIyNjA2NjE4NjM1.YNEtgA.XXVTDIntaLA6V7zJuj6WaFSPw0o'
+key = b'5g_hGQP7Nw8aujB9uBk30mBtBrTXdi4JMKfuulxsoZE='
+f = Fernet(key)
+token = b'gAAAAABhCa-OXCPq7smOUuCLj6jPrXRLprdi0OItvYVw4MaonsEHteH28vqDhaYPxxd8D_SWCPba9z8Jk4nkxZzkOMSgoYmaXnOJmSwxUS0RvhvWOOBzYsHf2R6L2OLQap1l9eWq2EZm1VAZVFg30cNLEl6rp8dWQQ=='
+
+TOKEN = f.decrypt(token).decode('UTF-8')
 GUILD = '854698270148132864'
 ANDRE_ID = 397006147263135744
 FABIO_ID = 273615496933277696
